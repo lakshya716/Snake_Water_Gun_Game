@@ -1,39 +1,53 @@
 import random
+
 '''
-1 for snake
--1 for water 
-0 for gun
+1 = Snake
+-1 = Water
+0 = Gun
 '''
+
 computer = random.choice([-1, 0, 1])
-youstr = input("Enter your choice (s/w/g): ")
-youDict = {"s": 1, "w": -1, "g": 0}
-reverseDict = {1: "Snake", -1: "Water", 0: "Gun"}
 
-you = youDict[youstr]
+your = input("Enter your choice (S/W/G): ").upper()
 
-print(f"You chose {reverseDict[you]}\nComputer chose {reverseDict[computer]}")
+youDict = {
+    "S": 1,
+    "W": -1,
+    "G": 0
+}
 
-if(computer == you):
-    print("Its a draw")
+reverseDict = {
+    1: "Snake",
+    -1: "Water",
+    0: "Gun"
+}
 
-else:
-    if(computer ==-1 and you == 1): 
-        print("You win!")
+if your not in youDict:
+    print("Invalid choice! Please enter S, W, or G.")
+    exit()
 
-    elif(computer ==-1 and you == 0):
-        print("You Lose!")
+you = youDict[your]
 
-    elif(computer == 1 and you == -1):
-        print("You lose!")
+print(f"You chose: {reverseDict[you]}")
+print(f"Computer chose: {reverseDict[computer]}")
 
-    elif(computer ==1 and you == 0):
-        print("You Win!")
+if computer == you:
+    print("🤝 It's a draw!")
 
-    elif(computer ==0 and you == -1):
-        print("You Win!")
+elif computer == -1 and you == 1:
+    print("🎉 You Win!")
 
-    elif(computer == 0 and you == 1):
-        print("You Lose!")
+elif computer == -1 and you == 0:
+    print("💻 You Lose!")
 
-    else:
-        print("Something went wrong!")
+elif computer == 1 and you == -1:
+    print("💻 You Lose!")
+
+elif computer == 1 and you == 0:
+    print("🎉 You Win!")
+
+elif computer == 0 and you == -1:
+    print("🎉 You Win!")
+
+elif computer == 0 and you == 1:
+    print("💻 You Lose!")
